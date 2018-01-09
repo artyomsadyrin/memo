@@ -10,20 +10,11 @@ import Foundation
 
 struct Card: Equatable {
     
-    var isFlipped = false
+    var isFlipped: Bool
     var imageName: String
     
     static func ==(lhs: Card, rhs: Card) -> Bool {
         return lhs.imageName == rhs.imageName
     }
-    
-    mutating func getFaceCard() -> String {
-        imageName = "card\(UInt32(arc4random_uniform(18) + 1))"
-        return imageName
-    }
 
-    mutating func getBackCard() -> String {
-        imageName = "card_back"
-        return imageName
-    }
 }
