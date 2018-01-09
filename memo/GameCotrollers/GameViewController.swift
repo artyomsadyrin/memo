@@ -12,6 +12,7 @@ class GameViewController: UIViewController {
 
     var cardViews = [UIView]()
     var game: Game!
+    var card: Card!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +38,9 @@ class GameViewController: UIViewController {
             addTouchToVIew(view: backView)
             backView.contentMode = .scaleAspectFit
             faceView.contentMode = .scaleAspectFit
-            backView.image = UIImage(named: "card_back")?.withRenderingMode(.alwaysTemplate)
-            faceView.image = UIImage(named: "card1")
+            
+            backView.image = UIImage(named: card.getBackCard())?.withRenderingMode(.alwaysTemplate)
+            faceView.image = UIImage(named: card.getFaceCard())
             
             backView.backgroundColor = UIColor.white
             cardView.layer.borderWidth = 1
