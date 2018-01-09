@@ -17,7 +17,13 @@ class Game {
     var cards: [Card]
     
     init(cardPairs: Int) {
-        self.cardPairs = cardPairs
+        
+        if cardPairs > 18 {
+            self.cardPairs = 18
+        }
+        else {
+            self.cardPairs = cardPairs
+        }
         
         var names = [String]()
         cards = [Card]()
@@ -25,7 +31,7 @@ class Game {
             let index = arc4random_uniform(UInt32(cardNames.count))
             names.append(cardNames[Int(index)])
         }
-        
+
         for name in names {
             let card = Card(isFlipped: false, imageName: name)
             let card2 = Card(isFlipped: false, imageName: name)
