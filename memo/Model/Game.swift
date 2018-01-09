@@ -10,7 +10,7 @@ import Foundation
 
 class Game {
     
-    let cardNames = (1...19).map { "card\($0)" }
+    private let cardNames = (1...19).map { "card\($0)" }
     var isFinished = false
     var cardPairs: Int
     var flippedCard: Int?
@@ -29,12 +29,8 @@ class Game {
         for name in names {
             let card = Card(isFlipped: false, imageName: name)
             let card2 = Card(isFlipped: false, imageName: name)
-            let card3 = Card(isFlipped: false, imageName: name)
-            let card4 = Card(isFlipped: false, imageName: name)
             cards.append(card)
             cards.append(card2)
-            cards.append(card3)
-            cards.append(card4)
         }
 
         cards = cards.shuffle()
