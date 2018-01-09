@@ -15,8 +15,8 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        game = Game(cardPairs: 1)
-        createGame(cardsNumber: 2)
+        game = Game(cardPairs: 2)
+        createGame(cardsNumber: 4)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,14 +45,24 @@ class GameViewController: UIViewController {
             self.view.addSubview(cardView)
             cardView.translatesAutoresizingMaskIntoConstraints = false
             
-            if i % 2 != 0 {
-                cardView.leftAnchor.constraint(equalTo: cardViews[i-1].rightAnchor, constant: 16).isActive = true
-            }
-            else {
+            switch i {
+            case 0:
                 cardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-                
+                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+            case 1:
+                cardView.leftAnchor.constraint(equalTo: cardViews[i-1].rightAnchor, constant: 16).isActive = true
+                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+            case 2:
+                cardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
+            case 3:
+                cardView.leftAnchor.constraint(equalTo: cardViews[i-1].rightAnchor, constant: 16).isActive = true
+                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
+            default:
+                cardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
             }
-            cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+            
             cardView.heightAnchor.constraint(equalToConstant: 100).isActive = true
             cardView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         }

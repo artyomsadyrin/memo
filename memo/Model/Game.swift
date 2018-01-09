@@ -29,8 +29,12 @@ class Game {
         for name in names {
             let card = Card(isFlipped: false, imageName: name)
             let card2 = Card(isFlipped: false, imageName: name)
+            let card3 = Card(isFlipped: false, imageName: name)
+            let card4 = Card(isFlipped: false, imageName: name)
             cards.append(card)
             cards.append(card2)
+            cards.append(card3)
+            cards.append(card4)
         }
 
         cards = cards.shuffle()
