@@ -8,98 +8,49 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
-
+class GameViewController: UIViewController, CardViewDelegate {
+    
+    private var cardsContainer: CardsContainer!
     var cardViews = [UIView]()
     var game: Game!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        game = Game(cardPairs: 2)
-        createGame(cardsNumber: 4)
+        let cardPairs = 8
+        game = Game(cardPairs: cardPairs)
+        createGame(cardsNumber: cardPairs*2)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func createGame(cardsNumber: Int) {
+        createContainer()
+        
         for i in 0..<cardsNumber {
-            let backView = UIImageView()
-            let faceView = UIImageView()
-            let cardView = UIView()
-            add(subview: faceView, to: cardView)
-            add(subview: backView, to: cardView)
+            let cardView = CardView(faceName: game.cards[i].imageName)
             
-            addTouchToVIew(view: backView)
-            backView.contentMode = .scaleAspectFit
-            faceView.contentMode = .scaleAspectFit
-            backView.image = UIImage(named: "card_back")?.withRenderingMode(.alwaysTemplate)
-            faceView.image = UIImage(named: game.cards[i].imageName)
-            
-            backView.backgroundColor = UIColor.white
-            cardView.layer.borderWidth = 1
-            cardView.layer.borderColor = UIColor.lightGray.cgColor
+            cardView.addTouch()
             cardViews.append(cardView)
-            self.view.addSubview(cardView)
+            self.cardsContainer.addSubview(cardView)
+            cardView.delegate = self
             cardView.translatesAutoresizingMaskIntoConstraints = false
-            
-            switch i {
-            case 0:
-                cardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-            case 1:
-                cardView.leftAnchor.constraint(equalTo: cardViews[i-1].rightAnchor, constant: 16).isActive = true
-                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-            case 2:
-                cardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
-            case 3:
-                cardView.leftAnchor.constraint(equalTo: cardViews[i-1].rightAnchor, constant: 16).isActive = true
-                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
-            default:
-                cardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-                cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-            }
-            
-            cardView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            cardView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        }
-    }
-    
-    private func add(subview: UIView, to cardView: UIView) {
-        cardView.addSubview(subview)
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        subview.topAnchor.constraint(equalTo: cardView.topAnchor).isActive = true
-        subview.bottomAnchor.constraint(equalTo: cardView.bottomAnchor).isActive = true
-        subview.rightAnchor.constraint(equalTo: cardView.rightAnchor).isActive = true
-        subview.leftAnchor.constraint(equalTo: cardView.leftAnchor).isActive = true
-    }
-    
-    func addTouchToVIew(view: UIView) {
-        let touchRecognizer = UITapGestureRecognizer(target: self, action: #selector(flipView(sender:)))
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(touchRecognizer)
-    }
-    
-    
-    @objc func flipView(sender: UITapGestureRecognizer) {
-        
-        if let imageView = sender.view as? UIImageView {
-            if let tappedIndex = indexFor(card: imageView.superview) {
-                game.cardFlipped(at: tappedIndex)
-            }
-            let faceView = imageView.superview?.subviews.filter { $0 != imageView }.first
-            if let face = faceView {
-                UIView.transition(from: imageView,
-                                  to: face,
-                                  duration: 0.3,
-                                  options: [.transitionFlipFromRight, .showHideTransitionViews],
-                                  completion: nil)
-            }
         }
         
+        cardsContainer.layout()
+    }
+    
+    private func createContainer() {
+        cardsContainer = CardsContainer()
+        cardsContainer.backgroundColor = UIColor.lightGray
+        view.addSubview(cardsContainer)
+        cardsContainer.translatesAutoresizingMaskIntoConstraints = false
+        cardsContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        cardsContainer.widthAnchor.constraint(equalTo: cardsContainer.heightAnchor).isActive = true
+        cardsContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        cardsContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
     private func indexFor(card: UIView?) -> Int? {
@@ -107,6 +58,12 @@ class GameViewController: UIViewController {
             return nil
         }
         return cardViews.index(of: card)
+    }
+    
+    func didFlipped(cardView: CardView) {
+        if let tappedIndex = indexFor(card: cardView) {
+            game.cardFlipped(at: tappedIndex)
+        }
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B121BC0200D00B7001E7D3A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B121BBF200D00B7001E7D3A /* CardView.swift */; };
 		7B3A41D52003D7E900A453DC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D42003D7E900A453DC /* Game.swift */; };
 		7B3A41D72003D7F300A453DC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D62003D7F300A453DC /* Card.swift */; };
 		7B3A41DA2003DC6400A453DC /* ArrayShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D92003DC6400A453DC /* ArrayShuffle.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B121BBF200D00B7001E7D3A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		7B3A41D42003D7E900A453DC /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7B3A41D62003D7F300A453DC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7B3A41D92003DC6400A453DC /* ArrayShuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayShuffle.swift; sourceTree = "<group>"; };
@@ -45,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B121BC2200D0296001E7D3A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7BED36F0200933F700A9E3E0 /* CardsContainer.swift */,
+				7B121BBF200D00B7001E7D3A /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7B3A41D32003D7C300A453DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +92,7 @@
 		7BF67A921FF40FDF0098F9CF /* memo */ = {
 			isa = PBXGroup;
 			children = (
+				7B121BC2200D0296001E7D3A /* Views */,
 				7B3A41D82003DC1D00A453DC /* Utilities */,
 				7B3A41D32003D7C300A453DC /* Model */,
 				7BF67A931FF40FDF0098F9CF /* AppDelegate.swift */,
@@ -98,7 +110,6 @@
 			children = (
 				7BF67A951FF40FDF0098F9CF /* GameViewController.swift */,
 				7BF67AA51FF413B70098F9CF /* ResultViewController.swift */,
-				7BED36F0200933F700A9E3E0 /* CardsContainer.swift */,
 			);
 			path = GameCotrollers;
 			sourceTree = "<group>";
@@ -181,6 +192,7 @@
 				7B3A41D72003D7F300A453DC /* Card.swift in Sources */,
 				7B3A41DA2003DC6400A453DC /* ArrayShuffle.swift in Sources */,
 				7BF67AA61FF413B70098F9CF /* ResultViewController.swift in Sources */,
+				7B121BC0200D00B7001E7D3A /* CardView.swift in Sources */,
 				7B3A41D52003D7E900A453DC /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
