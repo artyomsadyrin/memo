@@ -15,6 +15,6 @@ extension Array {
             let randomIndex = arc4random_uniform(UInt32(self.count - 1))
             newArr.swapAt(i, Array.Index(randomIndex))
         }
-        return self
+        return newArr
     }
 }

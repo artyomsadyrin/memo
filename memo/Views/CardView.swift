@@ -64,15 +64,12 @@ class CardView: UIView {
         
         if let imageView = sender.view as? UIImageView {
             let faceView = imageView.superview?.subviews.filter { $0 != imageView }.first
+            delegate?.didFlipped(cardView: self)
             if let face = faceView {
                 UIView.transition(from: imageView,
                                   to: face,
                                   duration: 0.3,
-                                  options: [.transitionFlipFromRight, .showHideTransitionViews]) { finished in
-                                    if finished {
-                                        self.delegate?.didFlipped(cardView: self)
-                                    }
-                }
+                                  options: [.transitionFlipFromRight, .showHideTransitionViews])
             }
         }
         
