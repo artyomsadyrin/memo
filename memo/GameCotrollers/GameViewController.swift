@@ -18,7 +18,7 @@ class GameViewController: UIViewController, CardViewDelegate {
         super.viewDidLoad()
         let cardPairs = 8
         game = Game(cardPairs: cardPairs)
-        createGame(cardsNumber: cardPairs*2)
+        createGame(cards: game.cards)
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,12 +26,12 @@ class GameViewController: UIViewController, CardViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func createGame(cardsNumber: Int) {
+    func createGame(cards: [Card]) {
         createContainer()
         
-        for i in 0..<cardsNumber {
-            let cardView = CardView(faceName: game.cards[i].imageName)
-            
+        for card in cards {
+            let cardView = CardView(faceName: card.imageName, isOpened: card.isOpened)
+            //cardView.flipView(sender: <#T##UITapGestureRecognizer#>)
             cardView.addTouch()
             cardViews.append(cardView)
             self.cardsContainer.addSubview(cardView)

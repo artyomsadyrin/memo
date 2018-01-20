@@ -20,9 +20,12 @@ class CardView: UIView {
     private var faceView: UIImageView
     private var backView: UIImageView
     
-    init(faceName: String) {
+    init(faceName: String, isOpened: Bool) {
         faceView = UIImageView(image: UIImage(named: faceName))
+        
+        faceView.isHidden = !isOpened
         backView = UIImageView(image: UIImage(named: "card_back")?.withRenderingMode(.alwaysTemplate))
+        backView.isHidden = !isOpened
         super.init(frame: CGRect.zero)
         
         backView.contentMode = .scaleAspectFit
@@ -59,9 +62,18 @@ class CardView: UIView {
         view.addGestureRecognizer(touchRecognizer)
     }
     
+    func flipView() {
+        let fromView = backView.isHidden ? faceView : backView
+        let toView = backView.isHidden ? backView : faceView
+        flipView(from: fromView, to: toView, userInitiated: false)
+    }
+    
     
     @objc func flipView(sender: UITapGestureRecognizer) {
         
+<<<<<<< HEAD
+        flipView(from: backView, to: faceView, userInitiated: true)
+=======
         if let imageView = sender.view as? UIImageView {
             let faceView = imageView.superview?.subviews.filter { $0 != imageView }.first
             if let face = faceView {
@@ -75,8 +87,20 @@ class CardView: UIView {
                 }
             }
         }
+>>>>>>> parent of 86aa0e7... Imported Alamofire library with CocoaPods
         
     }
+    
+    private func flipView(from: UIImageView, to: UIImageView, userInitiated: Bool) {
+        
+        UIView.transition(from: from,
+                          to: to,
+                          duration: 0.3,
+                          options: [.transitionFlipFromRight, .showHideTransitionViews]) { finished in
+                            if finished && userInitiated {
+                                self.delegate?.didFlipped(cardView: self)
+                            }
+                        }
 }
 
-
+}
