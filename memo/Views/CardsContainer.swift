@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 class CardsContainer: UIView {
+    
     func layout() {
         let views = self.subviews
         
@@ -56,5 +57,6 @@ class CardsContainer: UIView {
             
         }
     }
+    
 }
 

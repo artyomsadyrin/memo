@@ -1,5 +1,5 @@
 //
-//  ResultController.swift
+//  ResultViewController.swift
 //  memo
 //
 //  Created by Artsiom Sadyryn on 12/27/17.

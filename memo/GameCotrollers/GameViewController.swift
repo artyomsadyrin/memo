@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameViewController.swift
 //  memo
 //
 //  Created by Artsiom Sadyryn on 12/27/17.
@@ -41,7 +41,7 @@ class GameViewController: UIViewController, CardViewDelegate {
         
         for card in cards {
             let cardView = CardView(faceName: card.imageName, isOpened: card.isOpened)
-            //cardView.flipView(sender: <#T##UITapGestureRecognizer#>)
+            //cardView.flipView(sender: )
             cardViews.append(cardView)
             self.cardsContainer.addSubview(cardView)
             cardView.delegate = self
