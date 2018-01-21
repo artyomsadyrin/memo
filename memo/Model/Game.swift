@@ -36,14 +36,14 @@ class Game {
             } while indexArr.filter { $0 != Int(index) }.isEmpty
             names.append(cardNames[Int(index)])
         }
-
+        
         for name in names {
-            let card = Card(isFlipped: false, imageName: name, isMatched: false)
-            let card2 = Card(isFlipped: false, imageName: name, isMatched: false)
+            let card = Card(isFlipped: false, isMatched: false, imageName: name)
+            let card2 = Card(isFlipped: false, isMatched: false, imageName: name)
             cards.append(card)
             cards.append(card2)
         }
-
+        
         cards = cards.shuffle()
     }
     
@@ -58,6 +58,7 @@ class Game {
         }
         
         let center = NotificationCenter.default
+        center.post(name: NSNotification.Name(rawValue: "gameChanged"), object: nil)
     }
     
     func twoCardsFlipped(cardOne: Int, cardTwo: Int) -> Bool {
@@ -72,10 +73,11 @@ class Game {
             return true
         }
         else {
-            cards[cardOne].isFlipped = true
-            cards[cardTwo].isFlipped = true
+            cards[cardOne].isFlipped = false
+            cards[cardTwo].isFlipped = false
             return false
         }
     }
-
+    
 }
+

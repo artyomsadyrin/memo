@@ -17,15 +17,18 @@ class CardView: UIView {
     
     weak var delegate: CardViewDelegate?
     
+    var isOpened: Bool {
+        return backView.isHidden
+    }
+    
     private var faceView: UIImageView
     private var backView: UIImageView
     
     init(faceName: String, isOpened: Bool) {
         faceView = UIImageView(image: UIImage(named: faceName))
-        
         faceView.isHidden = !isOpened
         backView = UIImageView(image: UIImage(named: "card_back")?.withRenderingMode(.alwaysTemplate))
-        backView.isHidden = !isOpened
+        backView.isHidden = isOpened
         super.init(frame: CGRect.zero)
         
         backView.contentMode = .scaleAspectFit
@@ -37,6 +40,8 @@ class CardView: UIView {
         
         add(subview: faceView, to: self)
         add(subview: backView, to: self)
+        
+        addTouch()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,28 +73,11 @@ class CardView: UIView {
         flipView(from: fromView, to: toView, userInitiated: false)
     }
     
-    
     @objc func flipView(sender: UITapGestureRecognizer) {
-        
-<<<<<<< HEAD
         flipView(from: backView, to: faceView, userInitiated: true)
-=======
-        if let imageView = sender.view as? UIImageView {
-            let faceView = imageView.superview?.subviews.filter { $0 != imageView }.first
-            delegate?.didFlipped(cardView: self)
-            if let face = faceView {
-                UIView.transition(from: imageView,
-                                  to: face,
-                                  duration: 0.3,
-                                  options: [.transitionFlipFromRight, .showHideTransitionViews])
-            }
-        }
->>>>>>> parent of 86aa0e7... Imported Alamofire library with CocoaPods
-        
     }
     
     private func flipView(from: UIImageView, to: UIImageView, userInitiated: Bool) {
-        
         UIView.transition(from: from,
                           to: to,
                           duration: 0.3,
@@ -97,7 +85,6 @@ class CardView: UIView {
                             if finished && userInitiated {
                                 self.delegate?.didFlipped(cardView: self)
                             }
-                        }
-}
-
+        }
+    }
 }

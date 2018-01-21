@@ -1,5 +1,5 @@
 //
-//  GameController.swift
+//  ViewController.swift
 //  memo
 //
 //  Created by Artsiom Sadyryn on 12/27/17.
@@ -11,7 +11,7 @@ import UIKit
 class GameViewController: UIViewController, CardViewDelegate {
     
     private var cardsContainer: CardsContainer!
-    var cardViews = [UIView]()
+    var cardViews = [CardView]()
     var game: Game!
     
     override func viewDidLoad() {
@@ -19,11 +19,21 @@ class GameViewController: UIViewController, CardViewDelegate {
         let cardPairs = 8
         game = Game(cardPairs: cardPairs)
         createGame(cards: game.cards)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(gameUpdated), name: NSNotification.Name(rawValue: "gameChanged"), object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func gameUpdated() {
+        for (index, card) in game.cards.enumerated() {
+            if card.isOpened != cardViews[index].isOpened {
+                cardViews[index].flipView()
+            }
+        }
     }
     
     func createGame(cards: [Card]) {
@@ -32,7 +42,6 @@ class GameViewController: UIViewController, CardViewDelegate {
         for card in cards {
             let cardView = CardView(faceName: card.imageName, isOpened: card.isOpened)
             //cardView.flipView(sender: <#T##UITapGestureRecognizer#>)
-            cardView.addTouch()
             cardViews.append(cardView)
             self.cardsContainer.addSubview(cardView)
             cardView.delegate = self
@@ -45,16 +54,15 @@ class GameViewController: UIViewController, CardViewDelegate {
     private func createContainer() {
         cardsContainer = CardsContainer()
         cardsContainer.backgroundColor = UIColor.lightGray
-        view.addSubviewMargin(cardsContainer)
-//        view.addSubview(cardsContainer)
-//        cardsContainer.translatesAutoresizingMaskIntoConstraints = false
-//        cardsContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        cardsContainer.widthAnchor.constraint(equalTo: cardsContainer.heightAnchor).isActive = true
-//        cardsContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-//        cardsContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        view.addSubview(cardsContainer)
+        cardsContainer.translatesAutoresizingMaskIntoConstraints = false
+        cardsContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        cardsContainer.widthAnchor.constraint(equalTo: cardsContainer.heightAnchor).isActive = true
+        cardsContainer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        cardsContainer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
-    private func indexFor(card: UIView?) -> Int? {
+    private func indexFor(card: CardView?) -> Int? {
         guard let card = card else {
             return nil
         }
