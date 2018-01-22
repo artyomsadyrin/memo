@@ -12,6 +12,8 @@
 		7B3A41D52003D7E900A453DC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D42003D7E900A453DC /* Game.swift */; };
 		7B3A41D72003D7F300A453DC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D62003D7F300A453DC /* Card.swift */; };
 		7B3A41DA2003DC6400A453DC /* ArrayShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D92003DC6400A453DC /* ArrayShuffle.swift */; };
+		7BE0FBF7201650C800A1C19E /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE0FBF6201650C800A1C19E /* GameResult.swift */; };
+		7BE0FBFA201654FD00A1C19E /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE0FBF9201654FD00A1C19E /* StatsService.swift */; };
 		7BED36F1200933F700A9E3E0 /* CardsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED36F0200933F700A9E3E0 /* CardsContainer.swift */; };
 		7BF67A941FF40FDF0098F9CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF67A931FF40FDF0098F9CF /* AppDelegate.swift */; };
 		7BF67A961FF40FDF0098F9CF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF67A951FF40FDF0098F9CF /* GameViewController.swift */; };
@@ -30,6 +32,8 @@
 		7B3A41D42003D7E900A453DC /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7B3A41D62003D7F300A453DC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7B3A41D92003DC6400A453DC /* ArrayShuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayShuffle.swift; sourceTree = "<group>"; };
+		7BE0FBF6201650C800A1C19E /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
+		7BE0FBF9201654FD00A1C19E /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		7BED36F0200933F700A9E3E0 /* CardsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsContainer.swift; sourceTree = "<group>"; };
 		7BF67A901FF40FDF0098F9CF /* memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF67A931FF40FDF0098F9CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 			children = (
 				7B3A41D42003D7E900A453DC /* Game.swift */,
 				7B3A41D62003D7F300A453DC /* Card.swift */,
+				7BE0FBF6201650C800A1C19E /* GameResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,6 +84,14 @@
 				7B121BC3200D1232001E7D3A /* AddSubviewMargins.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7BE0FBF8201654E300A1C19E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7BE0FBF9201654FD00A1C19E /* StatsService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		7BF67A871FF40FDF0098F9CF = {
@@ -102,6 +115,7 @@
 		7BF67A921FF40FDF0098F9CF /* memo */ = {
 			isa = PBXGroup;
 			children = (
+				7BE0FBF8201654E300A1C19E /* Services */,
 				7B121BC2200D0296001E7D3A /* Views */,
 				7B3A41D82003DC1D00A453DC /* Utilities */,
 				7B3A41D32003D7C300A453DC /* Model */,
@@ -271,9 +285,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF67A961FF40FDF0098F9CF /* GameViewController.swift in Sources */,
+				7BE0FBFA201654FD00A1C19E /* StatsService.swift in Sources */,
 				7BF67A941FF40FDF0098F9CF /* AppDelegate.swift in Sources */,
 				7BED36F1200933F700A9E3E0 /* CardsContainer.swift in Sources */,
 				7B3A41D72003D7F300A453DC /* Card.swift in Sources */,
+				7BE0FBF7201650C800A1C19E /* GameResult.swift in Sources */,
 				7B3A41DA2003DC6400A453DC /* ArrayShuffle.swift in Sources */,
 				7BF67AA61FF413B70098F9CF /* ResultViewController.swift in Sources */,
 				7B121BC0200D00B7001E7D3A /* CardView.swift in Sources */,

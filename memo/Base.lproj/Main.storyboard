@@ -17,14 +17,26 @@
                     <view key="view" contentMode="scaleToFill" id="LBV-Wy-9Kg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7b-Ix-Svr">
+                                <rect key="frame" x="84" y="232" width="205" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kdt-eM-XTu"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="bsl-XC-WIl"/>
+                    <connections>
+                        <outlet property="labelResult" destination="J7b-Ix-Svr" id="GxS-5q-Pvm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cgf-gP-S9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="408"/>
+            <point key="canvasLocation" x="1269.5999999999999" y="407.94602698650675"/>
         </scene>
         <!--Game-->
         <scene sceneID="8MH-W6-3iC">

@@ -16,7 +16,7 @@ class GameViewController: UIViewController, CardViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cardPairs = 8
+        let cardPairs = 2
         game = Game(cardPairs: cardPairs)
         createGame(cards: game.cards)
         let center = NotificationCenter.default

@@ -15,6 +15,8 @@ class Game {
     var cardPairs: Int
     var flippedCard: Int?
     var cards: [Card]
+    private var steps: Int = 0
+    private var dateStarted: Date
     
     init(cardPairs: Int) {
         
@@ -24,6 +26,8 @@ class Game {
         else {
             self.cardPairs = cardPairs
         }
+        
+        dateStarted = Date()
         
         var names = [String]()
         cards = [Card]()
@@ -56,12 +60,14 @@ class Game {
         else {
             flippedCard = index
         }
+    
         
         let center = NotificationCenter.default
         center.post(name: NSNotification.Name(rawValue: "gameChanged"), object: nil)
     }
     
     func twoCardsFlipped(cardOne: Int, cardTwo: Int) -> Bool {
+        steps += 1
         if cards[cardOne] == cards[cardTwo] {
             cards[cardOne].isMatched = true
             cards[cardTwo].isMatched = true
@@ -69,14 +75,22 @@ class Game {
             if cardsRemained == 0 {
                 isFinished = true
                 print("Game finished")
+                gameFinished()
             }
             return true
         }
         else {
+            
             cards[cardOne].isFlipped = false
             cards[cardTwo].isFlipped = false
             return false
         }
+    }
+    
+    private func gameFinished() {
+        let timePassed = Date().timeIntervalSince(dateStarted)
+        let gameResult = GameResult(pairs: cards.count / 2, steps: steps, time: timePassed)
+        StatsService().save(results: gameResult)
     }
     
 }
