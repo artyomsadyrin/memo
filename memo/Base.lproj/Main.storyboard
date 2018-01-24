@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7b-Ix-Svr">
-                                <rect key="frame" x="84" y="232" width="205" height="73"/>
+                                <rect key="frame" x="85" y="460" width="205" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -31,7 +31,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="bsl-XC-WIl"/>
                     <connections>
-                        <outlet property="labelResult" destination="J7b-Ix-Svr" id="GxS-5q-Pvm"/>
+                        <outlet property="resultLabel" destination="J7b-Ix-Svr" id="ZfA-5S-DW3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cgf-gP-S9E" userLabel="First Responder" sceneMemberID="firstResponder"/>

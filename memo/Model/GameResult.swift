@@ -14,6 +14,6 @@ struct GameResult: Codable {
     let time: TimeInterval
     
     func score() -> Double {
-        return (1 / ((Double(steps)*Double(pairs)) / Double(time))) * 100_000
+        return ((1 / ((Double(steps)*Double(pairs)) / Double(time))) * 100_000)
     }
 }
