@@ -13,26 +13,7 @@ struct GameResult: Codable {
     let steps: Int
     let time: TimeInterval
     
-    func getDictionary() -> [String : String] {
-        var dictionary = [String : String]()
-        dictionary["pairs"] = String(pairs)
-        dictionary["steps"] = String(steps)
-        dictionary["time"] = String(time)
-        return dictionary
-    }
-    
-    init?(dictionary: [String: String]) {
-        guard let pairs = dictionary["pairs"], let steps = dictionary["steps"], let time = dictionary["time"] else {
-            fatalError()
-        }
-        self.pairs = Int(pairs)!
-        self.steps = Int(steps)!
-        self.time = TimeInterval(time)!
-    }
-    
-    init(pairs: Int, steps: Int, time: TimeInterval) {
-        self.pairs = pairs
-        self.steps = steps
-        self.time = time
+    func score() -> Double {
+        return (1 / ((Double(steps)*Double(pairs)) / Double(time))) * 100_000
     }
 }
