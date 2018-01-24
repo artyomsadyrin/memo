@@ -15,7 +15,7 @@ class ResultViewController: UIViewController {
     let gameService = StatsService()
     
     override func viewWillAppear(_ animated: Bool) {
-        let result = gameService.getlastResult()
+        let result = gameService.getLastResult()
         labelResult.text = "Pairs: \(result?.pairs), Steps: \(result?.steps), Time: \(result?.time)"
     }
     

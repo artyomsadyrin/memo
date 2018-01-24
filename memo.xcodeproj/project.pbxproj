@@ -12,6 +12,7 @@
 		7B3A41D52003D7E900A453DC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D42003D7E900A453DC /* Game.swift */; };
 		7B3A41D72003D7F300A453DC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D62003D7F300A453DC /* Card.swift */; };
 		7B3A41DA2003DC6400A453DC /* ArrayShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3A41D92003DC6400A453DC /* ArrayShuffle.swift */; };
+		7B66C7632018E4380050C10F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B66C7622018E4380050C10F /* UserDefaults.swift */; };
 		7BE0FBF7201650C800A1C19E /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE0FBF6201650C800A1C19E /* GameResult.swift */; };
 		7BE0FBFA201654FD00A1C19E /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE0FBF9201654FD00A1C19E /* StatsService.swift */; };
 		7BED36F1200933F700A9E3E0 /* CardsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED36F0200933F700A9E3E0 /* CardsContainer.swift */; };
@@ -32,6 +33,7 @@
 		7B3A41D42003D7E900A453DC /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		7B3A41D62003D7F300A453DC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		7B3A41D92003DC6400A453DC /* ArrayShuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayShuffle.swift; sourceTree = "<group>"; };
+		7B66C7622018E4380050C10F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7BE0FBF6201650C800A1C19E /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 		7BE0FBF9201654FD00A1C19E /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		7BED36F0200933F700A9E3E0 /* CardsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsContainer.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				7B3A41D92003DC6400A453DC /* ArrayShuffle.swift */,
 				7B121BC3200D1232001E7D3A /* AddSubviewMargins.swift */,
+				7B66C7622018E4380050C10F /* UserDefaults.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				7BE0FBF7201650C800A1C19E /* GameResult.swift in Sources */,
 				7B3A41DA2003DC6400A453DC /* ArrayShuffle.swift in Sources */,
 				7BF67AA61FF413B70098F9CF /* ResultViewController.swift in Sources */,
+				7B66C7632018E4380050C10F /* UserDefaults.swift in Sources */,
 				7B121BC0200D00B7001E7D3A /* CardView.swift in Sources */,
 				7B121BC4200D1232001E7D3A /* AddSubviewMargins.swift in Sources */,
 				7B3A41D52003D7E900A453DC /* Game.swift in Sources */,

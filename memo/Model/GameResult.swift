@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GameResult {
+struct GameResult: Codable {
     let pairs: Int
     let steps: Int
     let time: TimeInterval
