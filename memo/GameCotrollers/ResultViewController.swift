@@ -12,6 +12,7 @@ import UIKit
 class ResultViewController: UIViewController, UITableViewDataSource {
     
     let gameService = StatsService()
+    static let cellIdentifier = "ResultCell"
     
     var table: UITableView!
     var results: [GameResult]?
@@ -24,6 +25,8 @@ class ResultViewController: UIViewController, UITableViewDataSource {
         table = UITableView()
         view.addSubviewMargin(table)
         table.dataSource = self
+        //table.register(ResultTableViewCell.self, forCellReuseIdentifier: ResultViewController.cellIdentifier)
+        table.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: ResultViewController.cellIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +34,7 @@ class ResultViewController: UIViewController, UITableViewDataSource {
         results = gameService.getResults()
         let result = results?.first
         resultLabel.text = "Last game stats: \(String(describing: result?.pairs)) \(String(describing: result?.steps)) \(String(describing: result?.time))"
+        table.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,7 +42,7 @@ class ResultViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ResultViewController.cellIdentifier)!
         let result = results?[indexPath.row]
         cell.textLabel?.text = "game stats: \(result!.pairs) \(result!.steps) \(result!.time)"
         return cell
