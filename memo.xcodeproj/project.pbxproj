@@ -17,7 +17,7 @@
 		7BE0FBFA201654FD00A1C19E /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE0FBF9201654FD00A1C19E /* StatsService.swift */; };
 		7BED36F1200933F700A9E3E0 /* CardsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BED36F0200933F700A9E3E0 /* CardsContainer.swift */; };
 		7BF26E68201BA95E008852CA /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF26E67201BA95E008852CA /* ResultTableViewCell.swift */; };
-		7BF26E6A201BAB02008852CA /* Result Table View Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF26E69201BAB02008852CA /* Result Table View Cell.xib */; };
+		7BF26E6A201BAB02008852CA /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF26E69201BAB02008852CA /* ResultTableViewCell.xib */; };
 		7BF67A941FF40FDF0098F9CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF67A931FF40FDF0098F9CF /* AppDelegate.swift */; };
 		7BF67A961FF40FDF0098F9CF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF67A951FF40FDF0098F9CF /* GameViewController.swift */; };
 		7BF67A991FF40FDF0098F9CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF67A971FF40FDF0098F9CF /* Main.storyboard */; };
@@ -40,7 +40,7 @@
 		7BE0FBF9201654FD00A1C19E /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		7BED36F0200933F700A9E3E0 /* CardsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsContainer.swift; sourceTree = "<group>"; };
 		7BF26E67201BA95E008852CA /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
-		7BF26E69201BAB02008852CA /* Result Table View Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "Result Table View Cell.xib"; path = "memo/Views/Result Table View Cell.xib"; sourceTree = SOURCE_ROOT; };
+		7BF26E69201BAB02008852CA /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ResultTableViewCell.xib; path = memo/Views/ResultTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		7BF67A901FF40FDF0098F9CF /* memo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF67A931FF40FDF0098F9CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF67A951FF40FDF0098F9CF /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				7BED36F0200933F700A9E3E0 /* CardsContainer.swift */,
 				7B121BBF200D00B7001E7D3A /* CardView.swift */,
 				7BF26E67201BA95E008852CA /* ResultTableViewCell.swift */,
-				7BF26E69201BAB02008852CA /* Result Table View Cell.xib */,
+				7BF26E69201BAB02008852CA /* ResultTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF67A9E1FF40FDF0098F9CF /* LaunchScreen.storyboard in Resources */,
-				7BF26E6A201BAB02008852CA /* Result Table View Cell.xib in Resources */,
+				7BF26E6A201BAB02008852CA /* ResultTableViewCell.xib in Resources */,
 				7BF67A9B1FF40FDF0098F9CF /* Assets.xcassets in Resources */,
 				7BF67A991FF40FDF0098F9CF /* Main.storyboard in Resources */,
 			);
