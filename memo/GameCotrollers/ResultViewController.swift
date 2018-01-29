@@ -17,7 +17,7 @@ class ResultViewController: UIViewController, UITableViewDataSource {
     var table: UITableView!
     var results: [GameResult]?
     
-    @IBOutlet weak var resultLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +29,24 @@ class ResultViewController: UIViewController, UITableViewDataSource {
         table.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: ResultViewController.cellIdentifier)
     }
     
+  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         results = gameService.getResults()
-        let result = results?.first
-        resultLabel.text = "Last game stats: \(String(describing: result?.pairs)) \(String(describing: result?.steps)) \(String(describing: result?.time))"
+        //let result = results?.first
+        //resultLabel.text = "Last game stats: \(String(describing: result?.pairs)) \(String(describing: result?.steps)) \(String(describing: result?.time))"
         table.reloadData()
     }
+ 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ResultViewController.cellIdentifier)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: ResultViewController.cellIdentifier) as! ResultTableViewCell
         let result = results?[indexPath.row]
-        cell.textLabel?.text = "game stats: \(result!.pairs) \(result!.steps) \(result!.time)"
+        cell.resultLabel.text = "game stats: \(result!.pairs) \(result!.steps) \(result!.time)"
         return cell
     }
 }

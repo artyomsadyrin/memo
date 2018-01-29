@@ -15,7 +15,7 @@ extension UIView {
         
         self.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.topAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         view.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         view.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         view.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true

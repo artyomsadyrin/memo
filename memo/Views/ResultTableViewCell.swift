@@ -12,6 +12,7 @@ import UIKit
 class ResultTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var resultLabel: ResultTableViewCell!
+    @IBOutlet weak var resultLabel: UILabel!
+    
     
 }
