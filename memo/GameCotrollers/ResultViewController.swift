@@ -12,7 +12,7 @@ import UIKit
 class ResultViewController: UIViewController, UITableViewDataSource {
     
     let gameService = StatsService()
-    static let cellIdentifier = "ResultCell"
+    static let cellIdentifier = "ResultTableViewCell"
     
     var table: UITableView!
     var results: [GameResult]?
