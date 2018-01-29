@@ -13,6 +13,7 @@ class ResultViewController: UIViewController, UITableViewDataSource {
     
     let gameService = StatsService()
     static let cellIdentifier = "ResultTableViewCell"
+    static let bestIdentifer = "BestResultTableViewCell"
     
     var table: UITableView!
     var results: [GameResult]?
@@ -25,14 +26,17 @@ class ResultViewController: UIViewController, UITableViewDataSource {
         table = UITableView()
         view.addSubviewMargin(table)
         table.dataSource = self
-        //table.register(ResultTableViewCell.self, forCellReuseIdentifier: ResultViewController.cellIdentifier)
+        table.register(BestResultTableViewCell.self, forCellReuseIdentifier: ResultViewController.bestIdentifer)
         table.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: ResultViewController.cellIdentifier)
+        
     }
     
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         results = gameService.getResults()
+        prepareData()
+        
         //let result = results?.first
         //resultLabel.text = "Last game stats: \(String(describing: result?.pairs)) \(String(describing: result?.steps)) \(String(describing: result?.time))"
         table.reloadData()
@@ -44,9 +48,31 @@ class ResultViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row < 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ResultViewController.bestIdentifer) as! BestResultTableViewCell
+            let result = results?[indexPath.row]
+            cell.bestLabel.text = "game stats: \(result!.score()) \(result!.steps) \(result!.time)"
+            return cell
+        }
+        else {
         let cell = tableView.dequeueReusableCell(withIdentifier: ResultViewController.cellIdentifier) as! ResultTableViewCell
         let result = results?[indexPath.row]
-        cell.resultLabel.text = "game stats: \(result!.pairs) \(result!.steps) \(result!.time)"
+        cell.resultLabel.text = "game stats: \(result!.score()) \(result!.steps) \(result!.time)"
         return cell
     }
+}
+    private func prepareData() {
+        guard let result = results else {
+            return
+        }
+        if result.count <= 3 {
+        results = results?.sorted(by:  { $0.score() > $1.score() })
+        }
+        else {
+            let topResults = results?.sorted(by:  { $0.score() > $1.score() })[0...2]
+            results = Array(topResults!) + result
+        }
+        
+    }
+    
 }
