@@ -36,9 +36,6 @@ class ResultViewController: UIViewController, UITableViewDataSource {
         super.viewWillAppear(animated)
         results = gameService.getResults()
         prepareData()
-        
-        //let result = results?.first
-        //resultLabel.text = "Last game stats: \(String(describing: result?.pairs)) \(String(describing: result?.steps)) \(String(describing: result?.time))"
         table.reloadData()
     }
  
@@ -52,6 +49,7 @@ class ResultViewController: UIViewController, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ResultViewController.bestIdentifer) as! BestResultTableViewCell
             let result = results?[indexPath.row]
             cell.bestLabel.text = "game stats: \(result!.score()) \(result!.steps) \(result!.time)"
+            cell.bestLabel.backgroundColor = UIColor.yellow
             return cell
         }
         else {
