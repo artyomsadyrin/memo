@@ -11,6 +11,8 @@ import UIKit
 class GameViewController: UIViewController, CardViewDelegate {
     
     private var restartButton: UIButton!
+    private var timePassed: TimeInterval = 0
+    private var timerLabel: UILabel!
     private var cardsContainer: CardsContainer?
     var cardViews = [CardView]()
     var game: Game!
@@ -22,8 +24,13 @@ class GameViewController: UIViewController, CardViewDelegate {
         game = Game(cardPairs: cardPairs)
         createGame(cards: game.cards)
         
+        timerLabel = UILabel()
+        timerLabel.text = "0 : 00"
+        
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(gameUpdated), name: NSNotification.Name(rawValue: "gameChanged"), object: nil)
+        
+        center.addObserver(self, selector: #selector(timerTick), name: NSNotification.Name(rawValue: "timePassed"), object: nil)
         
         restartButton = UIButton()
         restartButton.addTarget(self, action: #selector(restartGame), for: .touchUpInside)
@@ -36,6 +43,13 @@ class GameViewController: UIViewController, CardViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func timerTick() {
+        timePassed += 1
+        let dateInterval = DateInterval(start: Date(), duration: timePassed)
+        let intervalFormatter = DateIntervalFormatter()
+        timerLabel.text = intervalFormatter.string(from: dateInterval)
     }
     
     @objc func gameUpdated() {
@@ -76,6 +90,12 @@ class GameViewController: UIViewController, CardViewDelegate {
     private func layoutElement() {
         restartButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(restartButton)
+        
+        timerLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(timerLabel)
+        timerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        timerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
         
         restartButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
         restartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

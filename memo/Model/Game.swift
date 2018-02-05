@@ -17,8 +17,11 @@ class Game {
     var cards: [Card]
     private var steps: Int = 0
     private var dateStarted: Date
+    private var timer: Timer?
     
     init(cardPairs: Int) {
+        
+        
         
         if cardPairs > 18 {
             self.cardPairs = 18
@@ -51,7 +54,18 @@ class Game {
         cards = cards.shuffle()
     }
     
+    private func startTimer() {
+        timer = Timer(timeInterval: 1.0, repeats: true, block: { (timer) in
+            let center = NotificationCenter.default
+            center.post(name: NSNotification.Name(rawValue: "gameChanged"), object: nil)
+        })
+    }
+    
     func cardFlipped(at index: Int) {
+   
+        if timer == nil {
+        startTimer()
+        }
         cards[index].isFlipped = true
         if let flipped = flippedCard {
             twoCardsFlipped(cardOne: flipped, cardTwo: index)
